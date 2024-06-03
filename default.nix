@@ -1,17 +1,17 @@
 { lib
-, llvmPackages_11
+, stdenv
+, raylib
 , cmake
-, spdlog
-, abseil-cpp }:
+}:
 
-llvmPackages_11.stdenv.mkDerivation rec {
-  pname = "cpp-examples";
+stdenv.mkDerivation rec {
+  pname = "psim";
   version = "0.1.0";
   
   src = ./.;
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [ spdlog abseil-cpp ];
+  buildInputs = [ raylib ];
 
   cmakeFlags = [
     "-DENABLE_TESTING=OFF"
@@ -19,12 +19,10 @@ llvmPackages_11.stdenv.mkDerivation rec {
   ];
 
   meta = with lib; {
-    homepage = "https://github.com/nixvital/nix-based-cpp-starterkit";
-    description = ''
-      A template for Nix based C++ project setup.";
-    '';
-    licencse = licenses.mit;
-    platforms = with platforms; linux ++ darwin;
-    maintainers = [ maintainers.breakds ];    
+    homepage = "https://github.com/dddictionary/psim";
+    description = "Particle simulation using raylib in C.";
+    license = licenses.mit;
+    platforms = platforms.unix;
+    maintainers = with maintainers; [ dddictionary ];
   };
 }
