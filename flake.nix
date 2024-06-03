@@ -1,5 +1,5 @@
 {
-  description = "A template for Nix based C++ project setup.";
+  description = "A simple raylib application in C";
 
   inputs = {
     # Pointing to the current stable release of nixpkgs. You can
@@ -9,7 +9,7 @@
     # E.g.
     #
     # nixpkgs.url = "github:NixOS/nixpkgs/unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/23.11";
 
     utils.url = "github:numtide/flake-utils";
   };
@@ -34,20 +34,21 @@
   in {
     devShells.default = pkgs.mkShell rec {
       # Update the name to something that suites your project.
-      name = "my-c++-project";
+      name = "psim";
 
       packages = with pkgs; [
-        # Development Tools
-        llvmPackages_14.clang
         cmake
         cmakeCurses
-
-        # Development time dependencies
-        gtest
-
-        # Build time and Run time dependencies
-        spdlog
-        abseil-cpp
+        raylib
+        gcc
+        wayland
+        xorg.libX11
+        xorg.libXrandr
+        xorg.libXinerama
+        xorg.libXcursor
+        xorg.libXi
+        pkg-config-unwrapped
+        libxkbcommon
       ];
 
       # Setting up the environment variables you need during
