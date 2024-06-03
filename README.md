@@ -5,7 +5,7 @@
 This repo is used as a template for creating C++ projects.
 
 1. It provides a Nix-based development environment (devShell).
-   
+
    To activate the `devShell`, run `nix develop`.
 2. It provides a working `CMakeLists.txt` that supports unit testing and installation.
 3. It provides a `default.nix` as a starting point to package your awesome C++ projects for others to depend on.
